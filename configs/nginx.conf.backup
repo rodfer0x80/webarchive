@@ -52,23 +52,6 @@ http {
         ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
 
     }
-    
-    # SSL Proxy Redirect blog [blog.rodfer.cloud@0.0.0.0:443]
-    server {
-        listen 443 ssl; 
-        server_name blog.rodfer.cloud;   
-        
-        location / {
-            proxy_set_header Host $host;
-            proxy_pass http://127.0.0.1:8081;
-            proxy_redirect off;
-        }
-
-        ssl_certificate /etc/letsencrypt/live/rodfer.cloud/fullchain.pem;
-        ssl_certificate_key /etc/letsencrypt/live/rodfer.cloud/privkey.pem;
-        include /etc/letsencrypt/options-ssl-nginx.conf;
-        ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
-    }
 
     # SSL Proxy Redirect @ [rodfer.cloud@0.0.0.0:443]
     server {
@@ -122,22 +105,6 @@ http {
             root /var/www/html/docs/imgs;
         }
     }
-    
-    # Root HTTP Static Server blog to Proxypass to SSL Server [localhost@127.0.0.1:8081]
-    server {
-        server_name localhost;
-
-        listen 8081;
-        listen localhost:8081;
-
-        location / {
-            root /var/www/html/docs/blog;
-            index index.html;
-        }
-
-        location ~ \.(gif|jpg|png)$ {
-            root /var/www/html/docs/imgs;
-        }
 
     # HTTP Server Redirect to SSL [rodfer.cloud|www.rodfer.cloud@0.0.0.0:80]
     server {
