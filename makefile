@@ -2,12 +2,16 @@
 run: # Run locally to port 8080
 	scripts/run.py
 
+.PHONY: update
+update: # Update local nginx instance
+	scripts/update.sh
+
 .PHONY: updateblog
-updateblog: # Update index.html with new data from posts
+update_blog: # Update index.html with new data from posts
 	scripts/update_blog.py
 
 .PHONY: run
-runblog: # Run locally to port 8080
+run_blog: # Run locally to port 8080
 	scripts/run_blog.py
 
 .PHONY: update_www-data
