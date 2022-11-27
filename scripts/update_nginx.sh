@@ -1,4 +1,4 @@
 #!/bin/sh
-sudo cp ./nginx.conf /etc/nginx/nginx.conf
+sudo cp ./configs/nginx.conf /etc/nginx/nginx.conf
 sudo systemctl restart nginx
 sudo systemctl status nginx
