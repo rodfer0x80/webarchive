@@ -22,6 +22,9 @@ update_www-data:
 update_nginx:
 	scripts/update_nginx.sh
 
+.PHONY: update_iptables
+update_iptables:
+	scripts/updata_iptables.sh
 .PHONY: ssl_cert
 ssl_cert:
 	scripts/ssl_cert.sh
