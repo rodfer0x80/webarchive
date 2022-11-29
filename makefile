@@ -26,6 +26,10 @@ update_nginx:
 update_iptables:
 	scripts/update_iptables.sh
 
+.PHONY: firewall_down:
+firewall_down:
+	scripts/firewall_down.sh
+
 .PHONY: ssl_cert
 ssl_cert:
 	scripts/ssl_cert.sh
