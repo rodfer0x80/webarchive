@@ -24,7 +24,8 @@ update_nginx:
 
 .PHONY: update_iptables
 update_iptables:
-	scripts/updata_iptables.sh
+	scripts/update_iptables.sh
+
 .PHONY: ssl_cert
 ssl_cert:
 	scripts/ssl_cert.sh
