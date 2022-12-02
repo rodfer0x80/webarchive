@@ -2,6 +2,7 @@
 
 
 from http.server import HTTPServer, BaseHTTPRequestHandler
+import datetime
 import sys
 import os
 
@@ -9,6 +10,9 @@ import os
 DOCS_LOCAL = "docs/"
 
 class Serv(BaseHTTPRequestHandler):
+    def __init__(self, *args, **kwargs):
+        super(Serv, self).__init__(*args, **kwargs)
+    
     def do_GET(self):
        if self.path == '/':
            self.path = '/index.html'
