@@ -9,4 +9,4 @@
 
 > https://blog.rodfer.cloud/
 
-<img src="/imgs/root.jpg"></img>
+<img src="/imgs/blog.jpg"></img>
