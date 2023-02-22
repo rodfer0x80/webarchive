@@ -33,7 +33,7 @@ class Updater:
         i = len(self.ls)
         ii = 0
         for l in self.ls:
-            posts = posts + f"<li><a href='posts/{str(l)}.txt'>{str(l).replace('_', ' ')}</a></li>"
+            posts = posts + f"<li><a href='blog/posts/{str(l)}.txt'>{str(l).replace('_', ' ')}</a></li>"
             ii += 1
             if i != ii:
                 posts = posts + "<br>"
