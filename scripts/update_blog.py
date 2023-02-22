@@ -9,14 +9,11 @@ import subprocess
 class Updater:
     def __init__(self):
         self.docs_local = "docs/"
-        self.posts_local = "posts/"
-        self.index_local = "index.html"
+        self.blog_local = f"{self.docs_local}blog/"
+        self.posts_local = f"{self.blog_local}posts/"
+        self.index_local = f"{self.blog_local}index.html"
         self.html_tab = " "*6
         self.html_tab2 = " "*8
-        try:
-            os.chdir(self.docs_local)
-        except:
-            sys.stderr.write(f"[x] Error changing to working directory {self.docs_local}\n")
         
         self.ls = list()
         self._html = ""
@@ -25,7 +22,7 @@ class Updater:
         return None
     
     def generatePosts(self):
-        _ls = os.listdir("posts/")
+        _ls = os.listdir(f"{os.environ['PWD']}/{self.posts_local}")
         for l in _ls:
             self.ls.append(l.split(".txt")[0])
         return 0
@@ -40,7 +37,7 @@ class Updater:
             if i != ii:
                 posts = posts + "<br>"
                 posts = posts + "\n" + self.html_tab2
-        self.html = self._html.split("<li><a")[0]+ posts + f"\n{self.html_tab}</ul>" + self._html.split("</ul>")[1]
+        self.html = self._html.split("<li><a")[0] + f"  {posts}" + f"\n{self.html_tab}</ul>" + self._html.split("</ul>")[1]
         return 0
 
     def runme(self):
@@ -50,7 +47,7 @@ class Updater:
             with open(self.index_local, 'r') as rh:
                 self._html = rh.read()
         except:
-            sys.stderr.write(f"[x] Error reading to {self.index_local}\n") 
+            sys.stderr.write(f"[x] Error reading from {self.index_local}\n") 
 
         self.buildHtml()
 
