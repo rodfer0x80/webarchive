@@ -37,7 +37,7 @@ class Updater:
             if i != ii:
                 posts = posts + "<br>"
                 posts = posts + "\n" + self.html_tab2
-        self.html = self._html.split("<li><a")[0] + f"  {posts}" + f"\n{self.html_tab}</ul>" + self._html.split("</ul>")[1]
+        self.html = self._html.split("<li><a")[0] + f"  {posts}" + f"\n{self.html_tab}</ul>" + self._html.split("</ul>")[1][1]
         return 0
 
     def runme(self):
