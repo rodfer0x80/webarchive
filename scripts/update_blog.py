@@ -12,7 +12,7 @@ class Updater:
         self.blog_local = f"{self.docs_local}blog/"
         self.posts_local = f"{self.blog_local}posts/"
         self.index_local = f"{self.blog_local}index.html"
-        self.html_space = "  "
+        self.html_space = " "*2
         self.html_tab = " "*4
         self.html_tab2 = " "*8
         
@@ -38,7 +38,7 @@ class Updater:
             if i != ii:
                 posts = posts + "<br>"
                 posts = posts + "\n" + self.html_tab2
-        self.html = self._html.split("<li><a")[0] + f"{self.html_space}{posts}" + f"\n{self.html_tab}</ul>" + self._html.split("</ul>")[1]
+        self.html = self._html.split("<li><a")[0] + f"{posts}" + f"\n{self.html_tab}</ul>" + self._html.split("</ul>")[1]
         return 0
 
     def runme(self):
