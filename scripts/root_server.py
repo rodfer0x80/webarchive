@@ -12,7 +12,7 @@ DOCS_LOCAL = "docs/"
 class Serv(BaseHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super(Serv, self).__init__(*args, **kwargs)
-    
+
     def do_GET(self):
        if self.path == '/':
            self.path = '/index.html'
@@ -20,7 +20,7 @@ class Serv(BaseHTTPRequestHandler):
            file_to_open = open(self.path[1:]).read()
            self.send_response(200)
        except:
-           file_to_open = "File not found"
+           file_to_open = "404"
            self.send_response(404)
        self.end_headers()
        self.wfile.write(bytes(file_to_open, 'utf-8'))

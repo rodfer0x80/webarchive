@@ -1,6 +1,6 @@
 .PHONY: run
-run: # Run locally to port 8080
-	scripts/run.py
+run:
+	scripts/root_server.py
 
 .PHONY: update
 update: # Update local nginx instance
