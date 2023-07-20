@@ -9,6 +9,10 @@ import os
 
 DOCS_LOCAL = "docs/"
 
+HOST = '0.0.0.0'
+PORT = 80
+    
+
 class Serv(BaseHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super(Serv, self).__init__(*args, **kwargs)
@@ -22,13 +26,14 @@ class Serv(BaseHTTPRequestHandler):
        except:
            file_to_open = "404"
            self.send_response(404)
+
        self.end_headers()
        self.wfile.write(bytes(file_to_open, 'utf-8'))
 
+
 def main():
-    host = 'localhost'
-    port = 8080
-    httpd = HTTPServer((host,port),Serv)
+    print(f"[*] Serving on http://{HOST}:{PORT}/")
+    httpd = HTTPServer((HOST, PORT),Serv)
     httpd.serve_forever()
     return 0
 
