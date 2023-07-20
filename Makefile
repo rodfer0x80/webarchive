@@ -10,9 +10,9 @@ update: # Update local nginx instance
 update_blog: # Update index.html with new data from posts
 	scripts/update_blog.py
 
-.PHONY: run
+.PHONY: local
 run_blog: # Run locally to port 8080
-	scripts/run_blog.py
+	scripts/localhost_server.py
 
 .PHONY: update_www-data
 update_www-data:
