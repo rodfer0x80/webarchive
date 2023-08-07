@@ -22,6 +22,10 @@ update_www-data:
 update_nginx:
 	scripts/update_nginx.sh
 
+.PHONY: update_obsidian
+update_obsidian: # update obsidian docker img and files
+	scripts/update_obsidian.sh
+
 .PHONY: update_iptables
 update_iptables:
 	scripts/update_iptables.sh
