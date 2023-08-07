@@ -15,4 +15,4 @@ test -e $DATA || \
 # update local.ini file to mount on volume
 cp "./local.ini" $LOCAL_INI || exit 3
 
-./scripts/run_obsidian.sh || exit 4
+../scripts/run_obsidian.sh || exit 4
