@@ -7,12 +7,12 @@ DATA="/var/www/obsidian/data"
 cd "$(dirname $0)/../obsidian" || exit 1
 
 # if there is no data saved setup dir
-test -e $DATA || \
-    mkdir -p $DATA  && \
-    chmod -R 777 "$DATA/.." ||\
+sudo test -e $DATA || \
+    sudo mkdir -p $DATA  && \
+    sudo chmod -R 777 "$DATA/.." ||\
     exit 2
 
 # update local.ini file to mount on volume
-cp "./local.ini" $LOCAL_INI || exit 3
+sudo cp "./local.ini" $LOCAL_INI || exit 3
 
-docker-compose up -d  || exit 4
+sudo docker-compose up -d  || exit 4

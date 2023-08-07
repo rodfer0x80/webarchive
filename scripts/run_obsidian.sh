@@ -5,7 +5,7 @@ password="obsidian"
 LOCAL_INI="/var/www/obsidian/local.ini"
 DATA="/var/www/obsidian/data"
 
-docker run --rm -d \
+sudo docker run --rm -d \
     -e COUCHDB_USER=$USER \
     -e COUCHDB_PASSWORD=$PASSWD \
     -v $LOCAL_INI:"/opt/couchdb/etc/local.ini" \
