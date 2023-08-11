@@ -72,6 +72,9 @@ func sendVideo(conWrite http.ResponseWriter, videoPath string) {
 
 func handleVideoRequest(conWrite http.ResponseWriter, request *http.Request) {
 	url := getVideoURL(conWrite, request)
+	if url == "" {
+		return
+	}
 
 	videoPath := downloadVideo(conWrite, request, url)
 
