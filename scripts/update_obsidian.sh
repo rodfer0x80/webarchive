@@ -10,7 +10,7 @@ DATA="/var/www/obsidian/data"
 sudo docker ps | head -n 2 | tail -n 1 | cut -d" " -f1 | xargs sudo docker stop
 sudo docker image rm -f couchdb
 
-sudo docker run --rm -d \
+sudo docker run -d \
     -e COUCHDB_USER="$USERNAME" \
     -e COUCHDB_PASSWORD="$PASSWORD" \
     -v $LOCAL_INI:"/opt/couchdb/etc/local.ini" \
