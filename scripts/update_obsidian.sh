@@ -1,18 +1,23 @@
 #!/bin/sh
 
+test -e ".env" || exit 1
+USERNAME="cat .env | head -n 1 | cut -d'=' -f1"
+PASSWORD="cat .env | head -n 2 | cut -d'=' -f1"
+
+if [ "$USERNAME" == "" ]; then
+    exit 1
+fi
+if [ "$PASSWD" == "" ]; then
+    exit 1
+fi
+
 LOCAL_INI="/var/www/obsidian/local.ini"
 DATA="/var/www/obsidian/data"
 
-# cd docker-compose.yml dir
-cd "$(dirname $0)/../obsidian" || exit 1
-
-# if there is no data saved setup dir
-sudo test -e $DATA || \
-    sudo mkdir -p $DATA  && \
-    sudo chmod -R 777 "$DATA/.." ||\
-    exit 2
-
-# update local.ini file to mount on volume
-sudo cp "./local.ini" $LOCAL_INI || exit 3
-
-sudo docker-compose up -d  || exit 4
+sudo docker run --rm -d \
+    -e COUCHDB_USER=$USERNAME \
+    -e COUCHDB_PASSWORD=$PASSWD \
+    -v $LOCAL_INI:"/opt/couchdb/etc/local.ini" \
+    -v $DATA:"/opt/couchdb/data" \
+    -p 5984:5984 \
+    couchdb
