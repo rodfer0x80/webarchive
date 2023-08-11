@@ -8,6 +8,7 @@ LOCAL_INI="/var/www/obsidian/local.ini"
 DATA="/var/www/obsidian/data"
 
 sudo docker ps | head -n 2 | tail -n 1 | cut -d" " -f1 | xargs sudo docker stop
+sudo docker image rm -f couchdb
 
 sudo docker run --rm -d \
     -e COUCHDB_USER="$USERNAME" \
