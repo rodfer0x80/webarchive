@@ -1,13 +1,13 @@
 #!/bin/sh
 
 test -e ".env" || exit 1
-USERNAME="cat .env | head -n 1 | cut -d'=' -f1"
-PASSWORD="cat .env | head -n 2 | cut -d'=' -f1"
+USERNAME="$(cat .env | head -n 1 | cut -d'=' -f2)"
+PASSWORD="$(cat .env | head -n 2 | tail -n 1 | cut -d'=' -f2)"
 
 if [ "$USERNAME" == "" ]; then
     exit 1
 fi
-if [ "$PASSWD" == "" ]; then
+if [ "$PASSWORD" == "" ]; then
     exit 1
 fi
 
@@ -15,8 +15,8 @@ LOCAL_INI="/var/www/obsidian/local.ini"
 DATA="/var/www/obsidian/data"
 
 sudo docker run --rm -d \
-    -e COUCHDB_USER=$USERNAME \
-    -e COUCHDB_PASSWORD=$PASSWD \
+    -e COUCHDB_USER="$USERNAME" \
+    -e COUCHDB_PASSWORD="$PASSWORD" \
     -v $LOCAL_INI:"/opt/couchdb/etc/local.ini" \
     -v $DATA:"/opt/couchdb/data" \
     -p 5984:5984 \
