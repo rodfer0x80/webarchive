@@ -1,7 +1,8 @@
 #!/bin/sh
 
-USER="$(read -s 'USER: ')"
-PASSWD="$(read -s 'PASSWORD: ')"
+if [ [ "$USER" -eq "" ] || [ "$PASSWD" -eq ""] ];then
+    exit 1
+fi
 LOCAL_INI="/var/www/obsidian/local.ini"
 DATA="/var/www/obsidian/data"
 
