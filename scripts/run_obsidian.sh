@@ -1,7 +1,7 @@
 #!/bin/sh
 
-USER="obsidian"
-password="obsidian"
+USER="$(read -s 'USER: ')"
+PASSWD="$(read -s 'PASSWORD: ')"
 LOCAL_INI="/var/www/obsidian/local.ini"
 DATA="/var/www/obsidian/data"
 

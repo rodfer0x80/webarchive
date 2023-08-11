@@ -26,6 +26,10 @@ update_nginx:
 update_obsidian: # update obsidian docker img and files
 	scripts/update_obsidian.sh
 
+.PHONY: update_ytpl
+update_ytpl: # update ytpl docker img and executable
+	scripts/ytpl_update.sh
+
 .PHONY: update_iptables
 update_iptables:
 	scripts/update_iptables.sh
