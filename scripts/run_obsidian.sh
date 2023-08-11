@@ -1,8 +1,12 @@
 #!/bin/sh
 
-if [ [ "$USER" -eq "" ] || [ "$PASSWD" -eq ""] ];then
+if [ "$USER" == "" ]; then
     exit 1
 fi
+if [ "$PASSWD" == "" ]; then
+    exit 1
+fi
+
 LOCAL_INI="/var/www/obsidian/local.ini"
 DATA="/var/www/obsidian/data"
 
