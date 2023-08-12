@@ -6,4 +6,4 @@ cd ./ytpl/ytpl &&\
     mv ./ytpl ../opt/ytpl &&\
     cd .. &&\
     rm ./opt/ytpl &&\
-    docker-compose up -d
+    sudo docker-compose up -d
