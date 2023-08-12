@@ -7,6 +7,8 @@ DATA="/var/www/obsidian/data"
 cd ./obsidian &&\
    test -e $DATA ||\
    mkdir -p $DATA &&\
+   test -e $LOCAL_INI ||\
+   cp "./local.ini" $LOCAL_INI &&\
    chmod -R 755 $DATA $LOCAL_INI &&\
    sudo docker-compose up -d;\
    cd ..
